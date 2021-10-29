@@ -110,30 +110,57 @@ exports.likeSauce = (req, res, next) => {
       if (req.body.like == 1) {
          sauce.likes++;
          sauce.usersLiked.push(req.body.userId);
+         sauce
+            .save()
+            .then((sauce) => {
+               res.status(200).json({
+                  message: "Sauce liked!",
+                  sauce: sauce,
+               });
+            })
+            .catch((error) => res.status(400).json({ error: error }));
       }
       if (req.body.like == -1) {
          sauce.dislikes++;
          sauce.usersDisliked.push(req.body.userId);
+         sauce
+            .save()
+            .then((sauce) => {
+               res.status(200).json({
+                  message: "Sauce disliked!",
+                  sauce: sauce,
+               });
+            })
+            .catch((error) => res.status(400).json({ error: error }));
       }
       if (req.body.like == 0) {
          //check if the user has liked or disliked the sauce and remove him from the array
          if (sauce.usersLiked.includes(req.body.userId)) {
             sauce.likes--;
             sauce.usersLiked.splice(sauce.usersLiked.indexOf(req.body.userId), 1);
+            sauce
+               .save()
+               .then((sauce) => {
+                  res.status(200).json({
+                     message: "Like removed",
+                     sauce: sauce,
+                  });
+               })
+               .catch((error) => res.status(400).json({ error: error }));
          }
          if (sauce.usersDisliked.includes(req.body.userId)) {
             sauce.dislikes--;
             sauce.usersDisliked.splice(sauce.usersDisliked.indexOf(req.body.userId), 1);
+            sauce
+               .save()
+               .then((sauce) => {
+                  res.status(200).json({
+                     message: "Dislike removed !",
+                     sauce: sauce,
+                  });
+               })
+               .catch((error) => res.status(400).json({ error: error }));
          }
       }
-      sauce
-         .save()
-         .then((sauce) => {
-            res.status(200).json({
-               message: "Sauce liked!",
-               sauce: sauce,
-            });
-         })
-         .catch((error) => res.status(400).json({ error: error }));
    });
 };
