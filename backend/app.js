@@ -8,7 +8,7 @@ const userRoutes = require("./routes/user");
 
 const app = express();
 mongoose
-   .connect("mongodb+srv://User:<password>@testoc.cmc03.mongodb.net/test?retryWrites=true&w=majority", {
+   .connect("mongodb+srv://Rengret:admin@testoc.cmc03.mongodb.net/test?retryWrites=true&w=majority", {
       useNewUrlParser: true,
       useUnifiedTopology: true,
    })
