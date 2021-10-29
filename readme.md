@@ -11,6 +11,7 @@ Installation:
 -  cloner le repo
 -  ouvrir un terminal et aller dans le dossier backend
 -  lancer la commande npm install
+-  dans app.js, pensez à modifier la clé pour se connecter à la base de données mangoose (pensez à en créer une manuellement)
 -  lancer la commande nodemon server pour lancer le serveur
 
 pour le reste c'est le frontend, référez vous aux instructions du projet 6 piiquante.
