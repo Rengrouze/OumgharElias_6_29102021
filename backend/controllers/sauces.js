@@ -6,6 +6,7 @@ exports.getAllSauces = (req, res, next) => {
    Sauce.find()
       .then((things) => {
          res.status(200).json(things);
+         console.log("Affichage des sauces");
       })
       .catch((error) => {
          res.status(400).json({
@@ -20,6 +21,7 @@ exports.getOneSauce = (req, res, next) => {
    })
       .then((sauce) => {
          res.status(200).json(sauce);
+         console.log("Affichage de la sauce" + sauce);
       })
       .catch((error) => {
          res.status(400).json({
@@ -47,6 +49,7 @@ exports.createSauce = (req, res, next) => {
             message: "Sauce created successfully!",
             sauce: sauce,
          });
+         console.log("Sauce créée" + sauce);
       })
       .catch((error) => {
          res.status(400).json({
@@ -72,6 +75,7 @@ exports.updateSauce = (req, res, next) => {
                   console.log(err);
                }
             });
+            console.log("L'image a bien été changée et l'ancienne supprimée");
          })
          .catch((error) => {
             res.status(400).json({
@@ -85,6 +89,7 @@ exports.updateSauce = (req, res, next) => {
             message: "Sauce updated successfully!",
             sauce: sauceObject,
          });
+         console.log("Sauce modifiée");
       })
       .catch((error) => res.status(400).json({ error: error }));
 };
@@ -98,6 +103,7 @@ exports.deleteSauce = (req, res, next) => {
                .then(() => res.status(200).json({ message: "Sauce deleted!" }))
                .catch((error) => res.status(400).json({ error: error }));
          });
+         console.log("Sauce supprimée");
       })
       .catch((error) => res.status(400).json({ error: error }));
 };
@@ -117,6 +123,7 @@ exports.likeSauce = (req, res, next) => {
                   message: "Sauce liked!",
                   sauce: sauce,
                });
+               console.log("Sauce likée");
             })
             .catch((error) => res.status(400).json({ error: error }));
       }
@@ -130,6 +137,7 @@ exports.likeSauce = (req, res, next) => {
                   message: "Sauce disliked!",
                   sauce: sauce,
                });
+               console.log("Sauce dislikée");
             })
             .catch((error) => res.status(400).json({ error: error }));
       }
@@ -145,6 +153,7 @@ exports.likeSauce = (req, res, next) => {
                      message: "Like removed",
                      sauce: sauce,
                   });
+                  console.log("Like supprimé");
                })
                .catch((error) => res.status(400).json({ error: error }));
          }
@@ -158,6 +167,7 @@ exports.likeSauce = (req, res, next) => {
                      message: "Dislike removed !",
                      sauce: sauce,
                   });
+                  console.log("Dislike supprimé");
                })
                .catch((error) => res.status(400).json({ error: error }));
          }

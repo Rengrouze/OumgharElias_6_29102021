@@ -15,6 +15,7 @@ exports.signup = (req, res, next) => {
             .save()
             .then(() => res.status(201).json({ message: "Utilisateur créé !" }))
             .catch((error) => res.status(400).json({ error }));
+         console.log("Compte créé");
       })
       .catch((error) => res.status(500).json({ message: "Erreur lors de la création de l'utilisateur !" }));
 };
@@ -35,6 +36,7 @@ exports.login = (req, res, next) => {
                   userId: user._id,
                   token: jwt.sign({ userId: user._id }, "RANDOM_TOKEN_SECRET", { expiresIn: "24h" }),
                });
+               console.log("Connexion réussie");
             })
             .catch((error) => res.status(500).json({ error }));
       })

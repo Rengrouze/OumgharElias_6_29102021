@@ -5,16 +5,16 @@ const saucesControllers = require("../controllers/sauces");
 const auth = require("../middleware/auth");
 const multer = require("../middleware/multer-config");
 
-router.get("/", auth, saucesCtrl.getAllSauces);
+router.get("/", auth, saucesControllers.getAllSauces);
 
-router.get("/:id", auth, saucesCtrl.getOneSauce);
+router.get("/:id", auth, saucesControllers.getOneSauce);
 
-router.post("/", auth, multer, saucesCtrl.createSauce);
+router.post("/", auth, multer, saucesControllers.createSauce);
 
-router.put("/:id", auth, multer, saucesCtrl.updateSauce);
+router.put("/:id", auth, multer, saucesControllers.updateSauce);
 
-router.delete("/:id", auth, saucesCtrl.deleteSauce);
+router.delete("/:id", auth, saucesControllers.deleteSauce);
 
-router.post("/:id/like", auth, saucesCtrl.likeSauce);
+router.post("/:id/like", auth, saucesControllers.likeSauce);
 
 module.exports = router;
