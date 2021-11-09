@@ -1,6 +1,6 @@
 Hello !
 
-This is the repo for the api of the project 6 piiquante for OpenClassrooms, I'm a student of the course "Developpement d'applications web"
+This is the repo for the api of the project 6 piiquante for OpenClassrooms, I'm a student of the course "Developpeur web"
 
 why am i writing in English ? i'm French
 
