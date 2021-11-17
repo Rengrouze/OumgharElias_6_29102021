@@ -46,7 +46,7 @@ app.use((req, res, next) => {
    next();
 });
 
-app.use(express.json({ limit: "5kb" })); // for parsing application/json and limit the size of the body
+app.use(express.json({ limit: "1kb" })); // for parsing application/json and limit the size of the body
 app.use(mongoSanitize()); // for sanitize the data from sql injection
 
 app.use("/images", express.static(path.join(__dirname, "images")));
