@@ -1,3 +1,5 @@
+const dotenv = require("dotenv").config();
+
 const toobusy = require("toobusy-js");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -30,8 +32,10 @@ app.use(function (req, res, next) {
    }
 });
 
+const mongooseId = process.env.DB_ID;
+
 mongoose // connect to mongoDB
-   .connect("mongodb+srv://Rengret:admin@testoc.cmc03.mongodb.net/test?retryWrites=true&w=majority", {
+   .connect(mongooseId, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
    })
