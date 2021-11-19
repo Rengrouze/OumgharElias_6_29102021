@@ -1,5 +1,6 @@
 const dotenv = require("dotenv").config();
 
+const helmet = require("helmet");
 const toobusy = require("toobusy-js");
 const express = require("express");
 const mongoose = require("mongoose");
@@ -22,7 +23,7 @@ app.use(
       cookie: { secure: true, httpOnly: true, path: "/user", sameSite: true },
    })
 );
-
+app.use(helmet()); // for security
 app.use(function (req, res, next) {
    // for dos attack
    if (toobusy()) {

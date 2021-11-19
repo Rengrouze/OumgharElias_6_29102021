@@ -1,10 +1,20 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt"); //for crypting the password
 const jwt = require("jsonwebtoken");
-const bouncer = require("express-bouncer")(500, 3600000);
+const { passwordStrength } = require("check-password-strength"); // check the password strength
+const bouncer = require("express-bouncer")(500, 3600000); // for brute force protection
 
 const User = require("../models/User");
 
 exports.signup = (req, res, next) => {
+   // check the password strength
+   const passwordStrengthResult = passwordStrength(req.body.password);
+   if (passwordStrengthResult.id <= 1) {
+      // if the password is too weak, reject the request
+      res.status(400).json({
+         error: "Votre mot de passe est trop faible",
+      });
+      return;
+   }
    bcrypt
       .hash(req.body.password, 10)
       .then((hash) => {
